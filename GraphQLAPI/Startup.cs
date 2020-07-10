@@ -30,6 +30,9 @@ namespace GraphQLAPI
           _.Types.Include<Query>();
         });
 
+      app.UseDefaultFiles();
+      app.UseStaticFiles();
+
       app.Run(async (context) =>
       {
         if (context.Request.Path.StartsWithSegments("/api/graphql") && string.Equals(context.Request.Method, "Post", StringComparison.OrdinalIgnoreCase))
