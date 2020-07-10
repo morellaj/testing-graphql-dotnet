@@ -20,10 +20,13 @@ namespace GraphQLAPI
         type Droid {
             id: String!
             name: String!
+            height: Int!
+            coolness: Int!
         }
 
         type Query {
-            hero: Droid,
+            droid(id: String, name: String): Droid,
+            allDroids(height: Int, coolness: Int): [Droid]
         }
         ", _ =>
         {

@@ -4,5 +4,7 @@ namespace GraphQLAPI
   {
     public string Id { get; set; }
     public string Name { get; set; }
+    public int Height { get; set; }
+    public int Coolness { get; set; }
   }
 }
