@@ -13,6 +13,7 @@ namespace GraphQLAPI
 {
   public class Startup
   {
+
     public void Configure(IApplicationBuilder app)
     {
       var schema = Schema.For(@"
