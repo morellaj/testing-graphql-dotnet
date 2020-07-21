@@ -17,20 +17,74 @@ namespace GraphQLAPI
     public void Configure(IApplicationBuilder app)
     {
       var schema = Schema.For(@"
-        type Droid {
-            id: String!
-            name: String!
-            height: Int!
-            coolness: Int!
+        type Employee {
+          employeeNumber: String!
+          firstName: String!
+          lastName: String!
+          employeeEmail: String!
+          employeeMetrics: EmployeeMetrics!
+        }
+
+        type EmployeeMetrics {
+          employeeNumber: String!
+          billableTargetHours: Int!
+          billableCurrentHours: Int!
+          trainingTargetHours: Int!
+          trainingCurrentHours: Int!
+          totalAnnualPTO: Int!
+          overflowPTO: Int!
+          usedPTO: Int!
+          totalYearHours: Int!
+          employee: Employee!
         }
 
         type Query {
-            droid(id: String, name: String): Droid,
-            allDroids(height: Int, coolness: Int): [Droid]
+          employee(firstName: String, lastName: String, employeeEmail: String, employeeNumber: String): Employee,
+
+          allEmployees(
+            firstName: String, 
+            lastName: String, 
+            employeeEmail: String, 
+            employeeNumber: String,
+            billableTargetHours: Int,
+            billableCurrentHours: Int,
+            trainingTargetHours: Int,
+            trainingCurrentHours: Int,
+            totalAnnualPTO: Int,
+            overflowPTO: Int,
+            usedPTO: Int,
+            totalYearHours: Int
+          ): [Employee],
+
+          employeeMetrics(
+            billableTargetHours: Int,
+            billableCurrentHours: Int,
+            trainingTargetHours: Int,
+            trainingCurrentHours: Int,
+            totalAnnualPTO: Int,
+            overflowPTO: Int,
+            usedPTO: Int,
+            totalYearHours: Int,
+            employeeNumber: String
+          ): EmployeeMetrics,
+          
+          allEmployeeMetrics(
+            billableTargetHours: Int,
+            billableCurrentHours: Int,
+            trainingTargetHours: Int,
+            trainingCurrentHours: Int,
+            totalAnnualPTO: Int,
+            overflowPTO: Int,
+            usedPTO: Int,
+            totalYearHours: Int,
+            employeeNumber: String
+          ): [EmployeeMetrics],
         }
         ", _ =>
         {
           _.Types.Include<Query>();
+          _.Types.Include<EmployeeType>();
+          _.Types.Include<EmployeeMetricsType>();
         });
 
       app.UseDefaultFiles();

@@ -6,7 +6,9 @@ namespace GraphQLAPI.Data
   {
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public int EmployeeNumber { get; set; }
     public string EmployeeEmail { get; set; }
+
+    public string EmployeeNumber { get; set; }
+    public EmployeeMetrics EmployeeMetrics { get; set; }
   }
 }

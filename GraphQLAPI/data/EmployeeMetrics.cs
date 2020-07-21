@@ -4,7 +4,6 @@ namespace GraphQLAPI.Data
 {
   public class EmployeeMetrics
   {
-    public int EmployeeNumber { get; set; }
     public int BillableTargetHours { get; set; }
     public int BillableCurrentHours { get; set; }
     public int TrainingTargetHours { get; set; }
@@ -14,5 +13,7 @@ namespace GraphQLAPI.Data
     public int UsedPTO { get; set; }
     public int TotalYearHours { get; set; }
 
+    public string EmployeeNumber { get; set; }
+    public Employee Employee { get; set; }
   }
 }
